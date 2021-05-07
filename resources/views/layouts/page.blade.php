@@ -11,12 +11,12 @@
     <nav class="flex justify-between bg-gray-200">
         <ul class="flex items-center">
             <li class="m-6">
-                <a class="text-blue-500 hover:text-blue-800" href="#">Posts</a>
+                <a class="text-blue-500 hover:text-blue-800" href="#">Home</a>
             </li>
         </ul>
         <ul class="flex items-center">
             <li class="m-6">
-                <a class="text-blue-500 hover:text-blue-800" href="#">Nuevo post</a>
+                <a class="text-green-500 hover:text-green-800" href="#">+ New article</a>
             </li>
         </ul>
     </nav>
