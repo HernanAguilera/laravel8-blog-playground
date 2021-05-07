@@ -14,6 +14,16 @@ class Category extends Model
         'name'
     ];
 
+     /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+    ];
+
     /**
      * Get all of the articles for the Category
      *

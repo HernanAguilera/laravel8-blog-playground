@@ -25,6 +25,9 @@
                         </label>
                         <select class="border-2 border-gray-300 p-2 w-full" name="category_id" id="category" required>
                             <option id="addCategory" value="">+ Add new</option>
+                            @foreach ($categories as $category)
+                                <option value="{{$category->id}}">{{ $category->name }}</option>
+                            @endforeach
                         </select>
                     </div>
 

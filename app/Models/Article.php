@@ -15,7 +15,8 @@ class Article extends Model
     protected $fillable = [
         'title',
         'body',
-        'category_id'
+        'category_id',
+        'author_id'
     ];
 
     /**
@@ -43,7 +44,7 @@ class Article extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function comments(): HasMany
+    public function comments()
     {
         return $this->hasMany(Comment::class);
     }
