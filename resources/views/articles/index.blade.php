@@ -1,5 +1,12 @@
 @extends('layouts.page')
 
 @section('content')
-    <h1 class="text-5xl">Articles</h1>
+    @foreach ($articles as $article)
+        <div>
+            <h2>{{$article->title}}</h2>
+            <div class="body-article">
+                {{$article->body}}
+            </div>
+        </div>
+    @endforeach
 @endsection
