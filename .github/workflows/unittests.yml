@@ -34,7 +34,7 @@ jobs:
           mysql -e 'CREATE DATABASE ${{ env.DB_DATABASE }};' -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }}
 
       - name: Rum migrations
-        run: php artisan migrate:fresh --seed --no-interaction
+        run: php artisan migrate:fresh --seed --no-interaction --force
 
       - name: Run PHPUnit
         run: php8.0 vendor/bin/phpunit
