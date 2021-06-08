@@ -25,9 +25,9 @@ jobs:
       run: composer install --prefer-dist
 
     - name: Create Database
-        run:|
-            sudo systemctl start mysql
-            mysql --user="${{  secrets.DB_USERNAME  }}" --password="${{  secrets.DB_USERNAME  }}" -e "CREATE DATABASE '${{ secrets.DB_DATABASE }}' character set UTF8mb4 collate utf8mb4_bin;"
+      run:|
+        sudo systemctl start mysql
+        mysql --user="${{  secrets.DB_USERNAME  }}" --password="${{  secrets.DB_USERNAME  }}" -e "CREATE DATABASE '${{ secrets.DB_DATABASE }}' character set UTF8mb4 collate utf8mb4_bin;"
 
     - name: Run PHPUnit
       run: php8.0 vendor/bin/phpunit
