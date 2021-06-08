@@ -15,10 +15,9 @@ jobs:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
-      APP_DEBUG: true
-      DB_DATABASE: db
-      DB_USERNAME: root
-      DB_PASSWORD: root
+      DB_DATABASE: ${{ secrets.JWT_SECRET }}
+      DB_USERNAME: ${{ secrets.JWT_SECRET }}
+      DB_PASSWORD: ${{ secrets.JWT_SECRET }}
 
     runs-on: ubuntu-latest
 
