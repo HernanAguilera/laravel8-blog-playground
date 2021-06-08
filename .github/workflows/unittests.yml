@@ -16,7 +16,7 @@ jobs:
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
       DB_DATABASE: ${{  secrets.DB_DATABASE  }}
-      DB_USERNAME: ${{  secrets.DB_USERNAME  }}
+      DB_USER: ${{  secrets.DB_USERNAME  }}
       DB_PASSWORD: ${{  secrets.DB_PASSWORD  }}
 
     runs-on: ubuntu-latest
@@ -30,7 +30,10 @@ jobs:
       - name: Create Database
         run: |
           sudo systemctl start mysql
-          mysql --user="${{  env.DB_USERNAME  }}" --password="${{  env.DB_PASSWORD  }}" -e "CREATE DATABASE ${{ env.DB_DATABASE }};"
+          mysql --user="${{  env.DB_USER  }}" --password="${{  env.DB_PASSWORD  }}" -e "CREATE DATABASE ${{ env.DB_DATABASE }};"
+
+      - name: Rum migrations
+        run: php artisan migrate
 
       - name: Run PHPUnit
         run: php8.0 vendor/bin/phpunit
