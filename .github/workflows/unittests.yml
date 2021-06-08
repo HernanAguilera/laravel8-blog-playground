@@ -19,21 +19,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-    - name: Install composer dependencies
-      run: composer install --prefer-dist
+      - name: Install composer dependencies
+        run: composer install --prefer-dist
 
-    - name: Create Database
-      run:|
-        sudo systemctl start mysql
-        mysql --user="${{  secrets.DB_USERNAME  }}" --password="${{  secrets.DB_USERNAME  }}" -e "CREATE DATABASE '${{ secrets.DB_DATABASE }}' character set UTF8mb4 collate utf8mb4_bin;"
+      - name: Create Database
+        run: |
+          sudo systemctl start mysql
+          mysql --user="${{  secrets.DB_USERNAME  }}" --password="${{  secrets.DB_USERNAME  }}" -e "CREATE DATABASE '${{ secrets.DB_DATABASE }}' character set UTF8mb4 collate utf8mb4_bin;"
 
-    - name: Run PHPUnit
-      run: php8.0 vendor/bin/phpunit
+      - name: Run PHPUnit
+        run: php8.0 vendor/bin/phpunit
 
-    - uses: actions/upload-artifact@master
-      if: failure()
-      with:
-        name: logs
-        path: storage/logs/laravel.log
+      - uses: actions/upload-artifact@master
+        if: failure()
+        with:
+          name: logs
+          path: storage/logs/laravel.log
