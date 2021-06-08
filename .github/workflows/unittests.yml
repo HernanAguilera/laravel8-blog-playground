@@ -30,6 +30,7 @@ jobs:
       - name: Create Database
         run: |
           sudo systemctl start mysql
+          echo '--user="${{  env.DB_USERNAME  }}" --password="${{  env.DB_USERNAME  }}" -e "CREATE DATABASE ${{ env.DB_DATABASE }};"'
           mysql --user="${{  env.DB_USERNAME  }}" --password="${{  env.DB_USERNAME  }}" -e "CREATE DATABASE ${{ env.DB_DATABASE }};"
 
       - name: Run PHPUnit
